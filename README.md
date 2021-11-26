@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web based simple calculator made using React in the front-end and useReducer hook for the state management
 
 ## Available Scripts
 

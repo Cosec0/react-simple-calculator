@@ -1,31 +1,48 @@
-import './App.css';
+import { useReducer } from 'react';
 
-function App() {
+import './App.css';
+import DigitButtonComponent from './components/DigitButtonComponent';
+import OperationButton from './components/OperationButton';
+
+import calcReducer from './reducers/calcReducer';
+import initialState from './reducers/intialState';
+
+
+const App = () => {
+  const [{ prevNumber, prevOperation, currentNumber }, calcDispatch] = useReducer(calcReducer, initialState);
+
   return (
     <div className="container">
       <div className="calculator-grid">
         <div className="output">
-          <div className="previous-output">45 +</div>
-          <div className="current-output">69</div>
+          <div className="previous-output">{prevNumber} {prevOperation}</div>
+          <div className="current-output">{currentNumber}</div>
         </div>
-        <div className="calc-button calc-large-button">AC</div>
-        <div className="calc-button">DEL</div>
-        <div className="calc-button">/</div>
-        <div className="calc-button">1</div>
-        <div className="calc-button">2</div>
-        <div className="calc-button">3</div>
-        <div className="calc-button">*</div>
-        <div className="calc-button">4</div>
-        <div className="calc-button">5</div>
-        <div className="calc-button">6</div>
-        <div className="calc-button">+</div>
-        <div className="calc-button">7</div>
-        <div className="calc-button">8</div>
-        <div className="calc-button">9</div>
-        <div className="calc-button">-</div>
-        <div className="calc-button">.</div>
-        <div className="calc-button">0</div>
-        <div className="calc-button calc-large-button">=</div>
+        <OperationButton operation="AC" dispatch={calcDispatch} styling="calc-button calc-large-button"/>
+        <OperationButton operation="DEL" dispatch={calcDispatch} styling="calc-button"/>
+        <OperationButton operation="/" dispatch={calcDispatch} styling="calc-button"/>
+
+        <DigitButtonComponent digit={1} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={2} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={3} dispatch={calcDispatch} styling="calc-button"/>
+
+        <OperationButton operation="*" dispatch={calcDispatch} styling="calc-button"/>
+
+        <DigitButtonComponent digit={4} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={5} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={6} dispatch={calcDispatch} styling="calc-button"/>
+
+        <OperationButton operation="+" dispatch={calcDispatch} styling="calc-button"/>
+
+        <DigitButtonComponent digit={7} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={8} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={9} dispatch={calcDispatch} styling="calc-button"/>
+
+        <OperationButton operation="-" dispatch={calcDispatch} styling="calc-button"/>
+
+        <DigitButtonComponent digit={'.'} dispatch={calcDispatch} styling="calc-button"/>
+        <DigitButtonComponent digit={0} dispatch={calcDispatch} styling="calc-button"/>
+        <OperationButton operation="=" dispatch={calcDispatch} styling="calc-button calc-large-button"/>
       </div>
     </div>
   );

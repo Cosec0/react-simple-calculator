@@ -9,7 +9,7 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #00AAFF, #00FF6C);
+  background: linear-gradient(to left, #005aa7, #fffde4);
 }
 
 .calculator-grid {
@@ -22,6 +22,7 @@
 }
 
 .calc-button {
+  cursor: pointer;
   border: 0.1rem solid grey;
   font-size: 2.25rem;
   text-align: center;
